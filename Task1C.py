@@ -6,24 +6,24 @@ def run():
     Build a list of stations within 10 km of Cambridge city centre
     and print their names in alphabetical order.
     """
-    # Define the Cambridge city centre coordinates
+    # IDeeal radius and coordinates
     cambridge_city_centre = (52.2053, 0.1218)
-
-    # Define the radius (10 km)
     radius = 10
 
-    # Build the list of stations
-    stations = build_station_list(use_cache=True)
-
-    # Get stations within the radius
+    stations = build_station_list(use_cache=True) # change to false for the FR code
     stations_in_radius = stations_within_radius(stations, cambridge_city_centre, radius)
 
-    # Extract and sort station names alphabetically
-    station_names = sorted([station.name for station in stations_in_radius])
+    # Get station names and sort them
+    station_names = []
+    for station in stations_in_radius:
+        station_names.append(station.name)
+    station_names.sort()
 
-    # Print the sorted station names
-    print(station_names)
+    # Print stations
+    print("Stations near Cambridge:")
+    for name in station_names:
+        print(name)
 
 if __name__ == "__main__":
-    print("*** Task 1C: CUED Part IA Flood Warning System ***")
+    print("Task 1C: Find stations near Cambridge")
     run()
