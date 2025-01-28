@@ -5,6 +5,7 @@
 from floodsystem.stationdata import build_station_list
 
 print("hello world")
+print('tin 20:07')
 
 def run():
     """Requirements for Task 1A"""
