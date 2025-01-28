@@ -70,7 +70,30 @@ def stations_by_distance(stations: list, p: tuple):
     output_x = sorted_by_key(x, 2, reverse = False)
     
     return output_x
-    
+
+
+#TASK 1C
+def stations_within_radius(stations, centre, r):
+    """
+    Returns a list of all stations within radius r of a geographic coordinate centre.
+
+    Args:
+        stations (list): List of MonitoringStation objects.
+        centre (tuple): Tuple containing latitude and longitude of the center point.
+        r (float): Radius in kilometers.
+
+    Returns:
+        list: List of MonitoringStation objects within the radius.
+    """
+    result = []
+    for station in stations:
+        distance = haversine(station.coord[0], station.coord[1], centre[0], centre[1])
+
+        # Check if the station is within the radius
+        if distance <= r:
+            result.append(station)
+    return result
+
     
         
         
