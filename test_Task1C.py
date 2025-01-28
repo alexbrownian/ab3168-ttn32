@@ -24,7 +24,6 @@ def test_stations_within_radius():
     for name in station_names:
         print(name)
 
-    # Define the expected station names (update this to match the actual data)
     expected_station_names = [
         'Bin Brook', 'Cambridge Baits Bite', "Cambridge Byron's Pool",
         'Cambridge Jesus Lock', 'Comberton', 'Dernford', 'Girton',
