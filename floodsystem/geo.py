@@ -8,17 +8,6 @@ geographical data.
 
 from .utils import sorted_by_key  # noqa
 
-def stations_within_radius(stations, centre, r):
-    result = []
-    for station in stations:
-        dx = station.coord[0] - centre[0]
-        dy = station.coord[1] - centre[1]
-        distance = (dx**2 + dy**2)**0.5*111
-
-        if distance <= r:
-            result.append(station)
-    return result
-
 import math
 
 def haversine(lat1, lon1, lat2, lon2):
@@ -65,7 +54,7 @@ def distance_calculator(stations: list, p: tuple):
         haversine_distance = haversine(station_coord[0], station_coord[1], p[0], p[1]) 
         
         # Append the station object and distance into x
-        x.append([station, haversine_distance]) 
+        x.append([station.name, station.town, haversine_distance]) 
         
     return x
 
@@ -78,9 +67,11 @@ def stations_by_distance(stations: list, p: tuple):
     x = distance_calculator(stations, p)
     
     # Sort the distance
-    pass
+    output_x = sorted_by_key(x, 2, reverse = False)
     
-print('testgeo')
+    return output_x
+    
+    
         
         
         
