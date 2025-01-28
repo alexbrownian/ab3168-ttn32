@@ -101,20 +101,15 @@ def rivers_with_station(stations):
 #making a dicitonary:
 def stations_by_river(stations):
     river_dict = {} 
-
+     
     for station in stations:
-        if station.river: 
+        if station.river and station.river.strip():  # Ensure river name is valid
             if station.river not in river_dict:
-                # If the river is not yet a key, create a new list for it
-                river_dict[station.river] = [] # making a new key val pair
-            river_dict[station.river].append(station)
+                river_dict[station.river] = []  
+            river_dict[station.river].append(station)  # Add station to the river's list
 
     return river_dict
-
-
-    
-        
-        
+                
 # TASK 1E
 ## Essentially, Task 1E is built on Task 1D. Task 1D outputs the stations along a river. 
 def rivers_by_station_numbers(stations, N):
