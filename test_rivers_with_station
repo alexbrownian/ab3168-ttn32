@@ -1,0 +1,23 @@
+from floodsystem.stationdata import build_station_list
+from floodsystem.geo import rivers_with_station, stations_by_river
+stations = build_station_list()
+
+def rivers_with_station(stations):
+    
+    rivers = set() # to prevent duplicates
+    i = 0
+
+    while i < 20:
+        print("Station info:", stations[i])
+        print()
+        print("Station River: ", stations[i].river)
+        #if station.river and station.river.strip():  # Checking if the station has a river attribute
+        #    rivers.add(station.river)
+        
+        i += 1
+
+    return rivers
+
+if __name__ == "__main__":
+    print("testing for 1D part i")
+    rivers_with_station(stations)

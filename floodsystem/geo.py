@@ -91,6 +91,7 @@ def rivers_with_station(stations):
     rivers = set() # to prevent duplicates
 
     for station in stations:
+        print(station.river)
         if station.river and station.river.strip():  # Checking if the station has a river attribute
             rivers.add(station.river)
 
@@ -128,12 +129,15 @@ def rivers_by_station_numbers(stations, N):
     
     # Counting
     river_count = [] # list of tuples. Each tuple contains the river name (str) and number of stations (int)
-    for river, stations in station_dict.item():
+    for river, stations in station_dict.items():
         river_count.append((river, len(stations))) # Create a tuple of the required data, and add it into the river_count
-        
-    sorted_river_count = sorted_by_key(river_count, 1) # Sort according to the number of stations
     
-    return sorted_river_count[:N] # return the river count by the cap
+    sorted_river_count = sorted_by_key(river_count, 1, reverse= True) # Sort according to the number of stations,
+    # in descending order
+        
+    capped_sorted_river_count = sorted_river_count[:N]
+    
+    return capped_sorted_river_count # return the river count by the cap
     
         
     
