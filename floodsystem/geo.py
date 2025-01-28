@@ -69,8 +69,7 @@ def stations_by_distance(stations: list, p: tuple):
     # Sort the distance
     pass
     
-    
-    
+print('testgeo')
         
         
         
