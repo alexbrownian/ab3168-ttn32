@@ -115,7 +115,7 @@ def stations_by_river(stations):
         
 # TASK 1E
 ## Essentially, Task 1E is built on Task 1D. Task 1D outputs the stations along a river. 
-def stations_by_station_numbers(stations, N):
+def rivers_by_station_numbers(stations, N):
     """
     Given a list of stations, use the function stations_by_river in 1D to return a dictionary of river_names: stations.
     Count the number of stations for each river. Sort the rivers in descending order. 
