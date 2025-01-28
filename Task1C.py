@@ -1,16 +1,23 @@
 from floodsystem.stationdata import build_station_list
 from floodsystem.geo import stations_within_radius
 
-def run():
-    stations = build_station_list()
+from .utils import sorted_by_key  # noqa
 
-    cambridge_center = (52.2053, 0.1218)
-    nearby_stations = stations_within_radius(stations, cambridge_center, 10) 
-    # pull from the Geo.py doc
+def stations_by_distance(stations: list, p: tuple):
+    """
+    Return a sorted list of stations with regards to the Haversine 
+    distance from the given coordinate p.
 
-    print(sorted([station.name for station in nearby_stations]))
+    Args:
+        stations (list): List of station objects.
+        p (tuple): Latitude and longitude of the reference point.
 
-if __name__ == "__main__":
-    run()
+    Returns:
+        list: A list of tuples, where each tuple contains a station object
+              and its distance from the point `p`, sorted by distance in ascending order.
+    """
+    x = distance_calculator(stations, p)
+    x_sorted = sorted_by_key(x, 1)  # Sorting by the second element (distance)
 
-print("test")
+    return x_sorted
+
