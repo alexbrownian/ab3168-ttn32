@@ -91,17 +91,18 @@ def rivers_with_station(stations):
     rivers = set() # to prevent duplicates
 
     for station in stations:
-        if station.river is True:  # Checking if the station has a river attribute
+        if station.river and station.river.strip():  # Checking if the station has a river attribute
             rivers.add(station.river)
 
     return rivers
+#to be fixed (1052) but lets seeeeee
 
 #making a dicitonary:
 def stations_by_river(stations):
     river_dict = {} 
 
     for station in stations:
-        if station.river is True: 
+        if station.river: 
             if station.river not in river_dict:
                 # If the river is not yet a key, create a new list for it
                 river_dict[station.river] = [] # making a new key val pair
