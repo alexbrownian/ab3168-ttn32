@@ -71,7 +71,7 @@ def stations_by_distance(stations: list, p: tuple):
     
     return output_x
 
-
+#Task 1C - 1D Brownian
 #TASK 1C
 def stations_within_radius(stations, centre, r):
     result = []
@@ -82,6 +82,31 @@ def stations_within_radius(stations, centre, r):
         if distance <= r:
             result.append(station)
     return result
+
+#TASK 1D
+#Empty Set
+def rivers_with_station(stations):
+    rivers = set() # to prevent duplicates
+
+    for station in stations:
+        if station.river is True:  # Checking if the station has a river attribute
+            rivers.add(station.river)
+
+    return rivers
+
+#making a dicitonary:
+def stations_by_river(stations):
+    river_dict = {} 
+
+    for station in stations:
+        if station.river is True: 
+            if station.river not in river_dict:
+                # If the river is not yet a key, create a new list for it
+                river_dict[station.river] = [] # making a new key val pair
+            river_dict[station.river].append(station)
+
+    return river_dict
+
 
     
         
