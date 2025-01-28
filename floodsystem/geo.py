@@ -10,6 +10,8 @@ from .utils import sorted_by_key  # noqa
 
 import math
 
+# Task 1B
+
 def haversine(lat1, lon1, lat2, lon2):
     """
     Calculate the great-circle distance between two points on the Earth using the Haversine formula.
@@ -86,7 +88,37 @@ def stations_within_radius(stations, centre, r):
     
         
         
+# TASK 1E
+## Essentially, Task 1E is built on Task 1D. Task 1D outputs the stations along a river. 
+def stations_by_station_numbers(stations, N):
+    """
+    Given a list of stations, use the function stations_by_river in 1D to return a dictionary of river_names: stations.
+    Count the number of stations for each river. Sort the rivers in descending order. 
+    
+    Args:
+    stations: list of MonitoringStation objects.
+    N: cap of stations to account.
+    
+    Output:
+    output_rivers: list of river names with N entries, in descending order
+    """
+    # generate dictionary from 1D
+    station_dict = stations_by_river(stations) 
+    
+    # Counting
+    river_count = [] # list of tuples. Each tuple contains the river name (str) and number of stations (int)
+    for river, stations in station_dict.item():
+        river_count.append((river, len(stations))) # Create a tuple of the required data, and add it into the river_count
         
+    sorted_river_count = sorted_by_key(river_count, 1) # Sort according to the number of stations
+    
+    return sorted_river_count[:N] # return the river count by the cap
+    
+        
+    
+    
+    
+    
     
 
 
