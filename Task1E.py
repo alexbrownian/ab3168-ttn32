@@ -12,9 +12,7 @@ def run():
     # Use the number provided in the question, and output the list of 
     N = 9
     output_list = rivers_by_station_numbers(stations_list, N)
-    
-    print(output_list)
-    
+        
     return output_list
     
     
