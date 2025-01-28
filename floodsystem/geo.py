@@ -18,4 +18,3 @@ def stations_within_radius(stations, centre, r):
         if distance <= r:
             result.append(station)
     return result
-
