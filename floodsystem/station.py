@@ -39,3 +39,19 @@ class MonitoringStation:
         d += "   river:         {}\n".format(self.river)
         d += "   typical range: {}".format(self.typical_range)
         return d
+    
+    def typical_range_consistent(self):
+        # Checks if typical range data is available and valid
+        if self.typical_range is None:
+            return False  # No data available
+        if self.typical_range[0] > self.typical_range[1]:
+            return False  # Low range is higher than high range
+        return True
+
+def inconsistent_typical_range_stations(stations):
+    output = []
+    for station in stations:
+        if not station.typical_range_consistent():
+            output.append(station)
+    return output
+
