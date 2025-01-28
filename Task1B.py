@@ -16,7 +16,7 @@ def run():
     # Define x to match the requirement in question (for testing)
     x = sorted_stations_by_distance
 
-    print(sorted_stations_by_distance)
+    print(sorted_stations_by_distance[:10])
 
 if __name__ == "__main__":
     print("*** Task 1B: CUED Part IA Flood Warning System ***")
