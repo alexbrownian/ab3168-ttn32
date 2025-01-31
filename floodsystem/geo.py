@@ -12,9 +12,9 @@ import math
 
 # Task 1B
 
-def haversine(lat1, lon1, lat2, lon2):
+def haversine_helper(lat1, lon1, lat2, lon2):
     """
-    Calculate the great-circle distance between two points on the Earth using the Haversine formula.
+    Calculate the great-circle distance between two points on the Earth using the Haversine module.
 
     Args:
     lat1, lon1: Latitude and longitude of the first point (in degrees).
@@ -23,22 +23,13 @@ def haversine(lat1, lon1, lat2, lon2):
     Returns:
     float: Distance between the two points in kilometers.
     """
+    from haversine import haversine, Unit
     # Convert latitude and longitude from degrees to radians
-    lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
-
-    # Radius of Earth in kilometers
-    R = 6371.0
-
-    # Differences in coordinates
-    dlat = lat2 - lat1
-    dlon = lon2 - lon1
+    position1 = (lat1, lon1)
+    position2 = (lat2, lon2)
 
     # Haversine formula
-    a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-
-    # Distance in kilometers
-    distance = R * c
+    distance = haversine(position1, position2)
 
     return distance
 
@@ -53,7 +44,7 @@ def distance_calculator(stations: list, p: tuple):
         station_coord = station.coord 
         
         # Compute haversine distance
-        haversine_distance = haversine(station_coord[0], station_coord[1], p[0], p[1]) 
+        haversine_distance = haversine_helper(station_coord[0], station_coord[1], p[0], p[1]) 
         
         # Append the station object and distance into x
         x.append([station.name, station.town, haversine_distance]) 
@@ -78,7 +69,7 @@ def stations_by_distance(stations: list, p: tuple):
 def stations_within_radius(stations, centre, r):
     result = []
     for station in stations:
-        distance = haversine(station.coord[0], station.coord[1], centre[0], centre[1])
+        distance = haversine_helper(station.coord[0], station.coord[1], centre[0], centre[1])
 
         # Check if the station is within the radius
         if distance <= r:
