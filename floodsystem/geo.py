@@ -28,12 +28,8 @@ def haversine_helper(lat1, lon1, lat2, lon2):
     position1 = (lat1, lon1)
     position2 = (lat2, lon2)
 
-    # Haversine formula
-    a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-
     # Distance in kilometers
-    distance = R * c
+    distance = haversine(position1, position2)
 
     return distance
 
