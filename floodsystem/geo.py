@@ -39,7 +39,7 @@ def distance_calculator(stations: list, p: tuple):
         station_coord = station.coord 
         
         # Compute haversine distance
-        haversine_distance = haversine(station_coord[0], station_coord[1], p[0], p[1]) 
+        haversine_distance = haversine_helper(station_coord[0], station_coord[1], p[0], p[1]) 
         
         # Appending the station object and distance into x
         x.append([station.name, station.town, haversine_distance]) 
@@ -107,6 +107,8 @@ def rivers_by_station_numbers(stations, N):
     # in descending order
         
     capped_sorted_river_count = sorted_river_count[:N]
+    
+    print(capped_sorted_river_count)
     
     return capped_sorted_river_count # return the river count by the cap
     
