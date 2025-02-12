@@ -6,6 +6,11 @@ def stations_level_over_threshold(stations, tol):
 
 stations = build_station_list(use_cache=True)
 
+def stations_and_level_printer(stations_list):
+    # Given the list of Station Objects, print the list of stations
+    for station in stations_list:
+        print(station.name )
+
 def stations_highest_rel_level(stations, N):
     tol = 0.8 # assigned by the question
     stations_over_threshold = stations_level_over_threshold(stations, tol)
@@ -14,7 +19,7 @@ def stations_highest_rel_level(stations, N):
     output = []
     
     if len(sorted_station_over_threshold) <= N:
-        
+        print()
     for i in range(N):
         try: 
             output += sorted_station_over_threshold[i]
