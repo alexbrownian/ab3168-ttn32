@@ -5,7 +5,7 @@ def run():
     """Task 2B: Identify and print stations over threshold"""
 
     # Build list of stations
-    stations = build_station_list()
+    stations = build_station_list(use_cache = True)
     
     # Update stations with latest water level data
     update_water_levels(stations)
