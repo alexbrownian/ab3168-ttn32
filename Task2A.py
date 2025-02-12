@@ -7,7 +7,7 @@ from floodsystem.stationdata import build_station_list, update_water_levels
 
 def run():
     # Build list of stations
-    stations = build_station_list()
+    stations = build_station_list(use_cache = True)
 
     # Update latest level data for all stations
     update_water_levels(stations)
