@@ -19,7 +19,11 @@ def stations_highest_rel_level(stations, N):
     sorted_station_over_threshold = sorted(stations_over_threshold, reverse = True)
     
     if len(sorted_station_over_threshold) <= N:
-        print_stations_and_level(sorted_station_over_threshold)
-    else:
-        print_stations_and_level(sorted_station_over_threshold[:N])
-        return sorted_station_over_threshold[:N]
+        
+    for i in range(N):
+        try: 
+            output += sorted_station_over_threshold[i]
+        except:
+            pass
+    
+    pass

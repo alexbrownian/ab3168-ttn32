@@ -49,7 +49,7 @@ class MonitoringStation:
         return True
     
     def relative_water_level(self):
-        return self.typical_range[0] / self.typical_range
+        return update_water_levels() / self.typical_range
 
 def inconsistent_typical_range_stations(stations):
     output = []
