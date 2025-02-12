@@ -4,6 +4,7 @@
 """This module provides a model for a monitoring station, and tools
 for manipulating/modifying station data
 """
+print('')
 
 class MonitoringStation:
     """This class represents a river level monitoring station"""
