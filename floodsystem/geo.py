@@ -108,6 +108,8 @@ def rivers_by_station_numbers(stations, N):
         
     capped_sorted_river_count = sorted_river_count[:N]
     
+    print(capped_sorted_river_count)
+    
     return capped_sorted_river_count # return the river count by the cap
     
         
