@@ -47,6 +47,9 @@ class MonitoringStation:
         if self.typical_range[0] > self.typical_range[1]:
             return False  # Low range is higher than high range
         return True
+    
+    def relative_water_level(self):
+        return self.typical_range[0] / self.typical_range
 
 def inconsistent_typical_range_stations(stations):
     output = []
