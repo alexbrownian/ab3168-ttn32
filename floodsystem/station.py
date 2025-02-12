@@ -3,33 +3,24 @@
 # SPDX-License-Identifier: MIT
 """This module provides a model for a monitoring station, and tools
 for manipulating/modifying station data
-
 """
-print('')
-
 
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
-    def __init__(self, station_id, measure_id, label, coord, typical_range,
-                 river, town):
+    def __init__(self, station_id, measure_id, label, coord, typical_range, river, town):
         """Create a monitoring station."""
-
         self.station_id = station_id
         self.measure_id = measure_id
 
-        # Handle case of erroneous data where data system returns
-        # '[label, label]' rather than 'label'
-        self.name = label
-        if isinstance(label, list):
-            self.name = label[0]
+        # Handle case of erroneous data where data system returns '[label, label]' rather than 'label'
+        self.name = label if not isinstance(label, list) else label[0]
 
         self.coord = coord
         self.typical_range = typical_range
         self.river = river
         self.town = town
-
-        self.latest_level = None
+        self.latest_level = None  # Default to None
 
     def __repr__(self):
         d = "Station name:     {}\n".format(self.name)
@@ -42,20 +33,24 @@ class MonitoringStation:
         return d
     
     def typical_range_consistent(self):
-        # Checks if typical range data is available and valid
+        """Checks if typical range data is available and valid."""
         if self.typical_range is None:
             return False  # No data available
+        if self.typical_range[0] is None or self.typical_range[1] is None:
+            return False  # One or both values are None
         if self.typical_range[0] > self.typical_range[1]:
             return False  # Low range is higher than high range
         return True
     
     def relative_water_level(self):
-        return update_water_levels() / self.typical_range
+        """Returns the latest water level as a fraction of the typical range."""
+        if self.latest_level is None or not self.typical_range_consistent():
+            return None  # No valid data
+
+        low, high = self.typical_range
+        return (self.latest_level - low) / (high - low) if high > low else None
+
 
 def inconsistent_typical_range_stations(stations):
-    output = []
-    for station in stations:
-        if not station.typical_range_consistent():
-            output.append(station)
-    return output
-
+    """Returns a list of stations with inconsistent typical range data."""
+    return [station for station in stations if not station.typical_range_consistent()]
