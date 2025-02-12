@@ -22,3 +22,18 @@ def stations_highest_rel_level(stations, N):
             pass
     
     pass
+
+def stations_level_over_threshold(stations, tol):
+    result = []
+
+    for station in stations:
+        relative_level = station.relative_water_level()
+
+        # Consider only valid stations with relative level above threshold
+        if relative_level is not None and relative_level > tol:
+            result.append((station, relative_level))
+
+    # Sort stations by relative level in descending order
+    result.sort(key=lambda x: x[1], reverse=True)
+
+    return result
