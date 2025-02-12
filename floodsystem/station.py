@@ -5,6 +5,7 @@
 for manipulating/modifying station data
 
 """
+print('')
 
 
 class MonitoringStation:
