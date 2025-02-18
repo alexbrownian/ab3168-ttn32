@@ -6,7 +6,7 @@ from stationdata import build_station_list, update_water_levels
 
 # Define moving average periods
 short_window = 2  # Fast MA (e.g., last 2 days)
-long_window = 10  # Slow MA (e.g., last 10 days)
+long_window = 3  # Slow MA (e.g., last 10 days)
 
 def moving_averages(water_levels, dates):
     """Calculate short-term and long-term moving averages for water levels."""
