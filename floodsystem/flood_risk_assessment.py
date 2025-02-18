@@ -1,12 +1,11 @@
 import pandas as pd
 import numpy as np
 import datetime
-from floodsystem.stationdata import build_station_list, update_water_levels
-from floodsystem.datafetcher import fetch_measure_levels
+from stationdata import *
 
 # Define moving average periods
 FAST_MA_DAYS = 2  # Short-term MA (last 2 days)
-SLOW_MA_DAYS = 10  # Long-term MA (last 10 days)
+SLOW_MA_DAYS = 3  # Long-term MA (last 10 days)
 
 def moving_average(data, window_size):
     """Compute simple moving average over a given window size."""

@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 import datetime
-from floodsystem.datafetcher import fetch_measure_levels
-from floodsystem.stationdata import build_station_list, update_water_levels
+from datafetcher import fetch_measure_levels
+from stationdata import build_station_list, update_water_levels
 
 # Define moving average periods
 short_window = 2  # Fast MA (e.g., last 2 days)

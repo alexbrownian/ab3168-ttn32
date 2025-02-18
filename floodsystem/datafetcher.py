@@ -47,7 +47,7 @@ def fetch_station_data(use_cache=True):
     Environment Agency service.
 
     Args:
-        use_cache: If ``True``, use file cache. Otherwise fetch data
+        use_cache: If `True`, use file cache. Otherwise fetch data
             over the Internet.
 
     Returns:
