@@ -39,7 +39,7 @@ class MonitoringStation:
             return False  # No data available
         if self.typical_range[0] is None or self.typical_range[1] is None:
             return False  # One or both values are None
-        if self.typical_range[0] > self.typical_range[1]:
+        if self.typical_range[0] > self.typical_range[1]:   
             return False  # Low range is higher than high range
         return True
     
