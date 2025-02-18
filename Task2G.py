@@ -5,7 +5,7 @@ from floodsystem.flood import stations_highest_rel_level
 from floodsystem.datafetcher import fetch_measure_levels
 from floodsystem.analysis import polyfit
 
-def assess_flood_risk():
+def run():
     """Assess flood risk for towns based on water level trends."""
     stations = build_station_list(use_cache=True)
     update_water_levels(stations)
@@ -72,4 +72,4 @@ def assess_flood_risk():
 
 if __name__ == "__main__":
     print("*** Task 2G: CUED Part IA Flood Warning System ***")
-    assess_flood_risk()
+    run()
