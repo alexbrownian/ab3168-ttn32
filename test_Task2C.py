@@ -16,3 +16,5 @@ def test_task2c_output_is_string():
     # Check that the output is a non-empty string
     assert isinstance(output, str), "Output should be a string."
     assert output != "", "Output should not be empty."
+    
+# Another approach could be to count the number of stations in the output to make sure there are 10 stations. 

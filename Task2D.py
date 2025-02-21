@@ -12,6 +12,7 @@ def run():
 
     # Build list of stations
     stations = build_station_list()
+    print('Fetched station list')
 
     # Station name to find
     station_name = "Cam"
@@ -21,6 +22,7 @@ def run():
     for station in stations:
         if station.name == station_name:
             station_cam = station
+            print('Station found')
             break
 
     # Check that station could be found. Return if not found.
@@ -39,8 +41,10 @@ def run():
 
     # Fetch data over past 2 days
     dt = 2
-    dates, levels = fetch_measure_levels(
-        station_cam.measure_id, dt=datetime.timedelta(days=dt))
+    dates, levels = fetch_measure_levels(station_cam.measure_id, dt=datetime.timedelta(days=dt))
+    
+    print('Station data fetched')
+    print(dates, levels)
 
     # Print level history
     for date, level in zip(dates, levels):
